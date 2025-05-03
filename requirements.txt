@@ -1,0 +1,12 @@
+python-dotenv
+chromadb
+google-generativeai
+streamlit
+youtube-dl
+youtube-transcript-api
+numpy
+pandas
+pillow
+matplotlib
+langchain
+transformers
