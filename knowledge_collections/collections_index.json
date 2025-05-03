@@ -1,0 +1,53 @@
+{
+  "collections": [
+    {
+      "id": "collection_eec6c3a8",
+      "name": "articles",
+      "description": "random articles",
+      "created_at": "2025-05-03T13:52:37.427925",
+      "updated_at": "2025-05-03T13:52:37.427947",
+      "source_files": [
+        "./news_articles/05-06-this-week-in-apps-apple-and-google-team-up-on-trackers-google-i-o-preview-apps-hit-newfronts.txt",
+        "./news_articles/05-07-3one4-capital-driven-by-contrarian-bets-raises-200-million-new-fund.txt",
+        "./news_articles/05-05-vint-cerf-on-the-exhilarating-mix-of-thrill-and-hazard-at-the-frontiers-of-tech.txt",
+        "./news_articles/05-03-spawning-lays-out-its-plans-for-letting-creators-opt-out-of-generative-ai-training.txt",
+        "./news_articles/05-03-chatgpt-everything-you-need-to-know-about-the-ai-powered-chatbot.txt",
+        "./news_articles/05-05-google-i-o-2023-is-next-week-heres-what-were-expecting.txt",
+        "./news_articles/05-03-ai-replace-tv-writers-strike.txt",
+        "./news_articles/05-05-with-deepfloyd-generative-ai-art-gets-a-text-upgrade.txt",
+        "./news_articles/05-03-ai-powered-supply-chain-startup-pando-lands-30m-investment.txt",
+        "./news_articles/05-07-fintech-space-continues-to-be-competitive-and-drama-filled.txt",
+        "./news_articles/05-03-nova-is-building-guardrails-for-generative-ai-content-to-protect-brand-integrity.txt",
+        "./news_articles/05-06-amazon-launches-free-channels-check-marks-come-to-gmail-and-openai-raises-more-moolah.txt",
+        "./news_articles/05-03-checks-the-ai-powered-data-protection-project-incubated-in-area-120-officially-exits-to-google.txt",
+        "./news_articles/05-03-databricks-acquires-ai-centric-data-governance-platform-okera.txt",
+        "./news_articles/05-06-ai-startups-q1-investments.txt",
+        "./news_articles/05-07-spacex-starship-startups-future.txt",
+        "./news_articles/05-04-hugging-face-and-servicenow-release-a-free-code-generating-model.txt",
+        "./news_articles/05-04-cma-generative-ai-review.txt",
+        "./news_articles/05-04-slack-updates-aim-to-put-ai-at-the-center-of-the-user-experience.txt",
+        "./news_articles/05-05-google-and-openai-are-walmarts-besieged-by-fruit-stands.txt",
+        "./news_articles/05-04-microsoft-doubles-down-on-ai-with-new-bing-features.txt"
+      ],
+      "combined_file": "./knowledge_collections/collection_eec6c3a8/collection_eec6c3a8.txt"
+    },
+    {
+      "id": "collection_c9a72252",
+      "name": "universe",
+      "description": "universe",
+      "created_at": "2025-05-03T13:54:05.711138",
+      "updated_at": "2025-05-03T13:54:05.711157",
+      "source_files": [
+        "./youtube_transcripts/CuRicHU9sOc.txt",
+        "./youtube_transcripts/CFpTzgk5jk0.txt",
+        "./youtube_transcripts/5mDn2oq9OV8.txt",
+        "./youtube_transcripts/HW9PLVjEiU8.txt",
+        "./youtube_transcripts/Zgu3qEPT86Q.txt",
+        "./youtube_transcripts/qS7tt_9P1k8.txt",
+        "./youtube_transcripts/milGLbH3Ukg.txt",
+        "./youtube_transcripts/iDqQ9qgTWmg.txt"
+      ],
+      "combined_file": "./knowledge_collections/collection_c9a72252/collection_c9a72252.txt"
+    }
+  ]
+}

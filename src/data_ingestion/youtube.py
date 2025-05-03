@@ -2,7 +2,7 @@ import json
 import os
 from typing import List, Dict, Optional
 
-import youtube_dl
+import yt_dlp as youtube_dl
 from youtube_transcript_api import YouTubeTranscriptApi
 
 from config import config

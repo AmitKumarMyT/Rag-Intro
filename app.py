@@ -27,7 +27,7 @@ genai.configure(api_key=google_api_key)
 # Embedding model for Gemini
 embedding_model = "models/text-embedding-004"
 # Chat model for Gemini
-chat_model = genai.GenerativeModel("models/gemini-1.5-flash")
+chat_model = genai.GenerativeModel("models/gemini-2.0-flash")
 
 # Function to generate embeddings using Gemini API
 def get_gemini_embedding(text):

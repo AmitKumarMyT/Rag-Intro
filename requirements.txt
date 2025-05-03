@@ -3,6 +3,7 @@ chromadb
 google-generativeai
 streamlit
 youtube-dl
+yt_dlp
 youtube-transcript-api
 numpy
 pandas
