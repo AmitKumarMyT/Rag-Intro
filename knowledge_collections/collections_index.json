@@ -48,6 +48,19 @@
         "./youtube_transcripts/iDqQ9qgTWmg.txt"
       ],
       "combined_file": "./knowledge_collections/collection_c9a72252/collection_c9a72252.txt"
+    },
+    {
+      "id": "collection_4e438c49",
+      "name": "YouTube Collection: playlist_PLQj-MBAtOQmnR1uxbVpvP6oF_qNjyNEJz",
+      "description": "Content from YouTube URL: https://www.youtube.com/playlist?list=PLQj-MBAtOQmnR1uxbVpvP6oF_qNjyNEJz",
+      "created_at": "2025-05-12T13:55:20.150707",
+      "updated_at": "2025-05-12T13:55:20.150720",
+      "source_files": [
+        "./youtube_transcripts/_sWoaOtQXA8.txt",
+        "./youtube_transcripts/_o6pmwZLABU.txt",
+        "./youtube_transcripts/6wJmtC5e76k.txt"
+      ],
+      "combined_file": "./knowledge_collections/collection_4e438c49/collection_4e438c49.txt"
     }
   ]
 }

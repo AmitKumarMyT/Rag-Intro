@@ -11,7 +11,7 @@ if __name__ == "__main__":
     current_dir = os.path.dirname(os.path.abspath(__file__))
     
     # Path to the Streamlit app
-    streamlit_app_path = os.path.join(current_dir, "src", "ui", "streamlit_app.py")
+    streamlit_app_path = os.path.join(current_dir, "src", "ui", "main.py")
     
     print(f"Launching YouTube Smart Agent UI...")
     print(f"You can access the UI in your browser after it starts.")

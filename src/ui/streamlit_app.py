@@ -62,34 +62,48 @@ st.set_page_config(
 def apply_custom_css():
     st.markdown("""
     <style>
-        /* Main background and text colors */
+        /* Main background with subtle gradient animation */
         .stApp {
-            background: linear-gradient(45deg, #0f0f1a, #1a1a2e);
-            color: rgba(255, 255, 255, 0.8);
+            background: linear-gradient(-45deg, #0f0f1a, #1a1a2e, #21213a, #262645);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease infinite;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
         }
         
         /* Frosted glass card styling */
         .glass-card {
-            background: rgba(30, 30, 50, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(30, 30, 50, 0.35);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 10px 0;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border-radius: 18px;
+            padding: 22px;
+            margin: 12px 0;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
         
         /* Knowledge source card styling */
         .source-card {
-            background: rgba(40, 40, 70, 0.6);
+            background: rgba(40, 40, 70, 0.35);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            padding: 15px;
+            border-radius: 16px;
+            padding: 16px;
             margin: 8px;
-            box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             cursor: pointer;
             height: 100%;
@@ -101,6 +115,7 @@ def apply_custom_css():
             transform: translateY(-5px);
             box-shadow: 0 10px 25px 0 rgba(69, 104, 220, 0.3);
             border: 1px solid rgba(106, 48, 147, 0.3);
+            background: rgba(45, 45, 75, 0.45);
         }
         
         .source-icon {
@@ -125,11 +140,19 @@ def apply_custom_css():
         
         /* Chat input field styling */
         .stTextInput > div > div > input {
-            background-color: rgba(60, 60, 80, 0.5);
+            background-color: rgba(60, 60, 80, 0.2);
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 16px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .stTextInput > div > div > input:focus {
+            border: 1px solid rgba(106, 48, 147, 0.5);
+            box-shadow: 0 4px 20px rgba(69, 104, 220, 0.3);
+            background-color: rgba(60, 60, 80, 0.3);
         }
         
         /* Button styling */
@@ -137,14 +160,17 @@ def apply_custom_css():
             background: linear-gradient(90deg, #4568dc, #6a3093);
             color: white;
             border: none;
-            border-radius: 10px;
-            padding: 10px 20px;
+            border-radius: 24px;
+            padding: 10px 24px;
             transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
         
         .stButton > button:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(106, 48, 147, 0.4);
+            background: linear-gradient(90deg, #4568dc, #7a359f);
         }
         
         /* Progress bar styling */
@@ -154,23 +180,43 @@ def apply_custom_css():
         
         /* Message container styling */
         .user-message {
-            background: rgba(80, 80, 120, 0.5);
-            border-radius: 15px 15px 0 15px;
-            padding: 15px;
-            margin: 10px 0;
-            border-left: 5px solid #4568dc;
+            background: rgba(69, 104, 220, 0.15);
+            border-radius: 18px 18px 0 18px;
+            padding: 16px;
+            margin: 12px 0;
+            border-left: 3px solid #4568dc;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: slide-in-right 0.3s ease;
+            max-width: 90%;
+            margin-left: auto;
+            color: rgba(255, 255, 255, 0.95);
         }
         
         .assistant-message {
-            background: rgba(50, 50, 80, 0.5);
-            border-radius: 15px 15px 15px 0;
-            padding: 15px;
-            margin: 10px 0;
-            border-right: 5px solid #6a3093;
+            background: rgba(106, 48, 147, 0.15);
+            border-radius: 18px 18px 18px 0;
+            padding: 16px;
+            margin: 12px 0;
+            border-right: 3px solid #6a3093;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: slide-in-left 0.3s ease;
+            max-width: 90%;
+            margin-right: auto;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        @keyframes slide-in-right {
+            from { transform: translateX(20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slide-in-left {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
         
         /* Section title styling */
@@ -186,21 +232,23 @@ def apply_custom_css():
         
         /* Source preview container */
         .source-preview {
-            background: rgba(20, 20, 35, 0.5);
-            padding: 10px;
-            border-radius: 10px;
+            background: rgba(20, 20, 35, 0.3);
+            padding: 12px;
+            border-radius: 12px;
             margin-top: 10px;
             font-family: monospace;
             font-size: 12px;
             max-height: 100px;
             overflow-y: auto;
             white-space: pre-wrap;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
         }
         
         /* Sidebar styling */
-        .css-1d391kg, .css-1wrcr25 {
-            background: rgba(20, 20, 35, 0.85);
-            backdrop-filter: blur(10px);
+        .css-1d391kg, .css-1wrcr25, .st-c8, .st-bq, section[data-testid="stSidebar"] {
+            background: rgba(20, 20, 35, 0.4) !important;
+            backdrop-filter: blur(15px) !important;
+            -webkit-backdrop-filter: blur(15px) !important;
         }
         
         /* Sidebar header */
@@ -208,26 +256,29 @@ def apply_custom_css():
             background: linear-gradient(90deg, #4568dc, #6a3093);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
         }
         
         /* Sidebar nav item */
         .sidebar-nav-item {
-            background: rgba(30, 30, 50, 0.6);
-            border-radius: 10px;
-            padding: 10px 15px;
-            margin: 5px 0;
+            background: rgba(30, 30, 50, 0.4);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin: 6px 0;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
         }
         
         .sidebar-nav-item:hover {
-            background: rgba(40, 40, 60, 0.8);
+            background: rgba(40, 40, 60, 0.6);
             transform: translateX(3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
         .sidebar-nav-icon {
@@ -238,7 +289,8 @@ def apply_custom_css():
         /* Selected source highlight */
         .selected-source {
             border-left: 4px solid #6a3093;
-            background: rgba(50, 50, 80, 0.6);
+            background: rgba(50, 50, 80, 0.4);
+            box-shadow: 0 4px 15px rgba(106, 48, 147, 0.2);
         }
         
         /* Action buttons for sources */
@@ -250,33 +302,81 @@ def apply_custom_css():
         }
         
         .action-btn {
-            background: rgba(40, 40, 70, 0.7);
+            background: rgba(40, 40, 70, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            padding: 4px 8px;
+            border-radius: 8px;
+            padding: 5px 10px;
             font-size: 12px;
             cursor: pointer;
             transition: all 0.2s;
         }
         
         .action-btn:hover {
-            background: rgba(70, 70, 100, 0.8);
+            background: rgba(70, 70, 100, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
         
         /* Source items in collection */
         .collection-items {
             margin-top: 10px;
-            padding: 8px;
-            background: rgba(20, 20, 35, 0.4);
-            border-radius: 8px;
+            padding: 10px;
+            background: rgba(20, 20, 35, 0.2);
+            border-radius: 10px;
             font-size: 12px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         
         .collection-item {
-            padding: 3px 6px;
-            margin: 2px 0;
-            border-radius: 4px;
-            background: rgba(60, 60, 90, 0.3);
+            padding: 4px 8px;
+            margin: 3px 0;
+            border-radius: 6px;
+            background: rgba(60, 60, 90, 0.2);
+            transition: all 0.2s ease;
+        }
+        
+        .collection-item:hover {
+            background: rgba(60, 60, 90, 0.4);
+        }
+        
+        /* Form elements */
+        .stTextInput, .stTextArea, .stSelectbox {
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+        
+        /* Chat welcome message styling */
+        .stMarkdown h3 {
+            background: linear-gradient(90deg, #4568dc, #6a3093);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Typing indicator animation */
+        @keyframes typing-dot {
+            0%, 20% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            80%, 100% { transform: translateY(0); }
+        }
+        
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.7);
+            margin: 0 2px;
+        }
+        
+        .typing-indicator span:nth-child(1) {
+            animation: typing-dot 1s infinite 0s;
+        }
+        
+        .typing-indicator span:nth-child(2) {
+            animation: typing-dot 1s infinite 0.2s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation: typing-dot 1s infinite 0.4s;
         }
     </style>
     """, unsafe_allow_html=True)
@@ -544,6 +644,8 @@ def update_knowledge_collection(collection_id: str, name: str = None, descriptio
     
     return False
 
+# Cache source scanning to reduce repeated filesystem operations
+@st.cache_data(ttl=30, show_spinner=False)
 # Function to scan for knowledge sources across all configured locations
 def scan_knowledge_sources(force_refresh: bool = False) -> List[Dict[str, Any]]:
     # Use cached results if available and not forcing refresh
@@ -824,14 +926,30 @@ def ingest_knowledge_source(url: str, name: str, source_type: str = "youtube"):
             # Extract videos
             status_text.text("Extracting videos from the channel/playlist...")
             videos = ingest_channel_videos(url, YOUTUBE_DIR)
+            status_text.text(f"Found {len(videos)} video entries.")
             progress_bar.progress(40)
             
+            # Fallback: check transcripts.json if no videos returned
+            transcripts_json = os.path.join(YOUTUBE_DIR, "transcripts.json")
+            if not videos and os.path.exists(transcripts_json):
+                status_text.text("No direct transcripts; loading from transcripts.json...")
+                try:
+                    with open(transcripts_json, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                        videos = data
+                        status_text.text(f"Loaded {len(videos)} entries from transcripts.json at {transcripts_json}")
+                        progress_bar.progress(50)
+                except Exception:
+                    status_text.error("Failed to load transcripts.json fallback.")
+                    progress_bar.progress(100)
+                    return False
+            
             if not videos:
-                status_text.error("No videos were found or extracted successfully.")
+                status_text.error("No video transcripts were created. Please check the channel URL or ensure transcripts exist.")
                 progress_bar.progress(100)
                 return False
-                
-            # Process videos
+            
+            # Process videos (prepare document list)
             status_text.text(f"Processing {len(videos)} videos for embedding...")
             youtube_docs = load_documents_from_directory(YOUTUBE_DIR)
             progress_bar.progress(50)
@@ -843,13 +961,16 @@ def ingest_knowledge_source(url: str, name: str, source_type: str = "youtube"):
             
             # Get paths to the video transcript files
             video_file_paths = []
-            for video_id in videos:
-                video_path = os.path.join(YOUTUBE_DIR, f"{video_id}.txt")
-                if os.path.exists(video_path):
-                    video_file_paths.append(video_path)
+            for video in videos:
+                vid = video.get("video_id")
+                if not vid:
+                    continue
+                path = os.path.join(YOUTUBE_DIR, f"{vid}.txt")
+                if os.path.exists(path):
+                    video_file_paths.append(path)
             
             if not video_file_paths:
-                status_text.error("No video transcript files were created.")
+                status_text.error("No video transcript files were found on disk.")
                 progress_bar.progress(100)
                 return False
                 
@@ -901,106 +1022,6 @@ def ingest_knowledge_source(url: str, name: str, source_type: str = "youtube"):
             return False
             
     except Exception as e:
-        status_text.error(f"Error during ingestion: {str(e)}")
-        progress_bar.progress(100)
-        return False
-
-# Display the sidebar for navigation
-def show_sidebar():
-    st.sidebar.markdown('<div class="sidebar-header">Smart Knowledge Agent</div>', unsafe_allow_html=True)
-    
-    # Knowledge sources section
-    st.sidebar.markdown("#### Navigation")
-    
-    # Chat option
-    chat_class = "sidebar-nav-item selected-source" if st.session_state.sidebar_view == "chat" else "sidebar-nav-item"
-    chat_html = f"""
-    <div class="{chat_class}">
-        <span class="sidebar-nav-icon">💬</span> Chat
-    </div>
-    """
-    st.sidebar.markdown(chat_html, unsafe_allow_html=True)
-    if st.sidebar.button("Chat", key="nav_chat", help="Switch to chat view"):
-        st.session_state.sidebar_view = "chat"
-        st.rerun()
-    
-    # Knowledge sources option
-    sources_class = "sidebar-nav-item selected-source" if st.session_state.sidebar_view == "sources" else "sidebar-nav-item"
-    sources_html = f"""
-    <div class="{sources_class}">
-        <span class="sidebar-nav-icon">📚</span> Knowledge Sources
-    </div>
-    """
-    st.sidebar.markdown(sources_html, unsafe_allow_html=True)
-    if st.sidebar.button("Knowledge Sources", key="nav_sources", help="Browse knowledge sources"):
-        st.session_state.sidebar_view = "sources"
-        st.rerun()
-    
-    # Add new source option
-    add_class = "sidebar-nav-item selected-source" if st.session_state.sidebar_view == "add" else "sidebar-nav-item"
-    add_html = f"""
-    <div class="{add_class}">
-        <span class="sidebar-nav-icon">➕</span> Add Knowledge Source
-    </div>
-    """
-    st.sidebar.markdown(add_html, unsafe_allow_html=True)
-    if st.sidebar.button("Add Knowledge Source", key="nav_add", help="Add a new knowledge source"):
-        st.session_state.sidebar_view = "add"
-        st.rerun()
-    
-    # Create collection option
-    create_class = "sidebar-nav-item selected-source" if st.session_state.sidebar_view == "create_collection" else "sidebar-nav-item"
-    create_html = f"""
-    <div class="{create_class}">
-        <span class="sidebar-nav-icon">🗂️</span> Create Collection
-    </div>
-    """
-    st.sidebar.markdown(create_html, unsafe_allow_html=True)
-    if st.sidebar.button("Create Collection", key="nav_create", help="Create a new knowledge collection"):
-        st.session_state.sidebar_view = "create_collection"
-        st.rerun()
-    
-    # Current source info
-    if st.session_state.active_source:
-        st.sidebar.markdown("---")
-        st.sidebar.markdown("#### Current Source")
-        
-        source = st.session_state.active_source
-        st.sidebar.markdown(f"**{source['name']}**")
-        
-        # Description if available
-        if source.get("description"):
-            st.sidebar.markdown(f"*{source['description']}*")
-        
-        st.sidebar.markdown(f"Type: {source['type'].capitalize()}")
-        
-        # Show file info
-        size_kb = round(source["size"]/1024, 1)
-        size_display = f"{size_kb} KB" if size_kb < 1024 else f"{round(size_kb/1024, 1)} MB"
-        st.sidebar.markdown(f"Size: {size_display}")
-        
-        # Format the last modified date
-        if "last_modified" in source:
-            last_modified = datetime.fromtimestamp(source["last_modified"])
-            time_display = last_modified.strftime("%b %d, 2023")
-            st.sidebar.markdown(f"Last Modified: {time_display}")
-        
-        # Collection info
-        if source.get("is_collection", False) and "source_files" in source:
-            st.sidebar.markdown(f"Contains {len(source['source_files'])} source files")
-
-# Display all knowledge sources
-def show_sources_page():
-    st.markdown("## Your Knowledge Sources")
-    st.markdown("Select a knowledge source to chat with, or use the actions to manage your sources.")
-    
-    sources = scan_knowledge_sources(force_refresh=True)
-    
-    # Add Delete All button with confirmation
-    if sources:
-        st.markdown("---")
-        st.markdown("### Danger Zone")
-        
         with st.expander("Delete All Knowledge Sources", expanded=False):
             st.warning("This action will permanently delete all knowledge sources and cannot be undone.")
             delete_all = st.button("Delete All Knowledge Sources", key="delete_all_sources", 
@@ -1239,6 +1260,101 @@ def show_chat_interface():
         
         # Force a rerun to update the UI
         st.rerun()
+
+# Display available knowledge sources
+def show_sources_page():
+    st.markdown("## Knowledge Sources")
+    st.markdown("Browse and manage your available knowledge sources")
+    
+    # Scan for sources
+    sources = scan_knowledge_sources()
+    
+    # Add refresh button
+    if st.button("Refresh Sources", key="refresh_sources"):
+        sources = scan_knowledge_sources(force_refresh=True)
+        st.success("Knowledge sources refreshed!")
+    
+    # Delete all sources option (hidden in expander)
+    with st.expander("Delete All Knowledge Sources", expanded=False):
+        st.warning("This action will permanently delete all knowledge sources and cannot be undone.")
+        delete_all = st.button("Delete All Knowledge Sources", key="delete_all_sources", 
+                          help="Permanently delete all knowledge sources")
+        
+        if delete_all:
+            confirmation = st.text_input("Type 'DELETE' to confirm", key="confirm_delete",
+                                     placeholder="DELETE")
+            if confirmation == "DELETE" and st.button("Confirm Deletion", key="confirm_delete_btn"):
+                if delete_all_knowledge_sources():
+                    st.success("All knowledge sources have been deleted.")
+                    st.session_state.knowledge_cache = {}
+                    st.session_state.last_cache_update = None
+                    st.rerun()
+                else:
+                    st.error("Failed to delete all knowledge sources.")
+    
+    if sources:
+        # Create display grid - responsive columns
+        num_cols = 3
+        cols = st.columns(num_cols)
+        
+        # Display cards in the columns
+        for i, source in enumerate(sources):
+            col_idx = i % num_cols
+            display_source_card(source, cols[col_idx])
+    else:
+        st.info("No knowledge sources found. Add a YouTube channel to get started!")
+
+# Show sidebar navigation
+def show_sidebar():
+    with st.sidebar:
+        st.markdown('<div class="sidebar-header">Smart Knowledge Agent</div>', unsafe_allow_html=True)
+        
+        # Navigation items
+        nav_items = [
+            {"id": "chat", "icon": "💬", "label": "Chat"},
+            {"id": "sources", "icon": "📚", "label": "Knowledge Sources"},
+            {"id": "add", "icon": "➕", "label": "Add YouTube Content"},
+            {"id": "create_collection", "icon": "🔄", "label": "Create Collection"}
+        ]
+        
+        # Display navigation items
+        for item in nav_items:
+            is_active = st.session_state.sidebar_view == item["id"]
+            active_class = "selected-source" if is_active else ""
+            
+            # Create a container for each nav item
+            clicked = st.button(
+                f"{item['icon']} {item['label']}", 
+                key=f"nav_{item['id']}",
+                use_container_width=True,
+                help=f"Go to {item['label']}"
+            )
+            
+            if clicked:
+                # If editing, clear editing state
+                if st.session_state.sidebar_view == "edit":
+                    st.session_state.editing_source = None
+                
+                # Update current view
+                st.session_state.sidebar_view = item["id"]
+                st.rerun()
+        
+        # Display active source info if available
+        if st.session_state.active_source:
+            source = st.session_state.active_source
+            st.markdown("---")
+            st.markdown(f"**Active Source:**")
+            st.markdown(f"{source['icon']} {source['name']}")
+            
+            if st.button("Clear Source", key="clear_source"):
+                st.session_state.active_source = None
+                st.session_state.retriever = None
+                st.session_state.messages = []
+                st.rerun()
+        
+        # Footer
+        st.markdown("---")
+        st.markdown("Made with ❤️ by RAG-Intro Team")
 
 # Main app layout and logic
 def main():
